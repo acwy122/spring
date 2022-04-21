@@ -3,7 +3,9 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="person" class="com.mashibing.bean.Person">
+    <!--<bean id="person" class="com.mashibing.bean.Person">-->
+    <!-- 由单例变为多例 -->
+    <bean id="person" class="com.mashibing.bean.Person" scope="prototype">
         <property name="id" value="1"></property>
         <property name="age" value="26"></property>
         <property name="name" value="zhangsan"></property>

@@ -6,7 +6,9 @@ public class MyTest {
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("ioc.xml");
         Person person = context.getBean("person", Person.class);
-        System.out.println(person);
+        Person person2 = context.getBean("person",Person.class);
+        System.out.println(person == person2);
+
     }
 
 }
