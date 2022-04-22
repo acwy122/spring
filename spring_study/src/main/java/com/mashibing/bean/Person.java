@@ -51,4 +51,25 @@ public class Person {
                 ", gender='" + gender + '\'' +
                 '}';
     }
+
+    public Person(Integer id, String name, Integer age, String gender) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+    }
+
+    public Person(Integer id, String name, Integer age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        System.out.println("age....");
+    }
+
+    public Person(Integer id, String name, String gender) {
+        this.id = id;
+        this.name = name;
+        this.gender = gender;
+        System.out.println("gender....");
+    }
 }
