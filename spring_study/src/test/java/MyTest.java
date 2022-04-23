@@ -32,9 +32,12 @@ public class MyTest {
 //        Person person3 = context.getBean("person3", Person.class);
 //        System.out.println(person3);
         //当有多个相同参数的构造时，使用的构造会被覆盖
-        Person person4 = context.getBean("person4",Person.class);
-        System.out.println(person4);
+//        Person person4 = context.getBean("person4",Person.class);
+//        System.out.println(person4);
 
+
+        Person person5 = context.getBean("person5", Person.class);
+        System.out.println(person5);
     }
 
 }

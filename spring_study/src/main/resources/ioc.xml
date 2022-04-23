@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- 在进行框架配置的时候，可以使用xml文件，也可以使用注解的方式
@@ -56,4 +57,11 @@
     <!--
     总结：在日常工作中，一般都是用name，value的方式，很少有人去使用index或者type的方式，但是要注意各种情况出现的问题
     -->
+
+
+    <!-- 使用P命名空间来给属性赋值 -->
+    <bean id="person5" class="com.mashibing.bean.Person" p:id="5" p:name="wangwu" p:age="25" p:gender="女">
+
+
+    </bean>
 </beans>
