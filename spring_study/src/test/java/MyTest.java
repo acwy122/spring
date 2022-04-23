@@ -49,10 +49,18 @@ public class MyTest {
 //        System.out.println(parent);
 
 
+//        Person person = context.getBean("person", Person.class);
+//        System.out.println(person);
+//        Person person2 = context.getBean("person2", Person.class);
+//        System.out.println(person2);
+
+//        Person myFactoryBean = context.getBean("myFactoryBean", Person.class);
+//        System.out.println(myFactoryBean);
+
         Person person = context.getBean("person", Person.class);
         System.out.println(person);
-        Person person2 = context.getBean("person2", Person.class);
-        System.out.println(person2);
+        ((ClassPathXmlApplicationContext) context).close();
+
     }
 
 }

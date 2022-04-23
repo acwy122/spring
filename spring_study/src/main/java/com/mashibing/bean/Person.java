@@ -40,6 +40,15 @@ public class Person {
         System.out.println("gender....");
     }
 
+    public void init(){
+        //编写N行逻辑代码完成初始化功能
+        System.out.println("person对象初始化完成");
+    }
+
+    public void destory(){
+        System.out.println("person对象被销毁");
+    }
+
     public Integer getId() {
         return id;
     }

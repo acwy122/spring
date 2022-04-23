@@ -161,15 +161,23 @@
 
     <!--利用工厂方法创建bean-->
     <!--静态工厂:类名.静态方法()-->
-    <bean id="person" class="com.mashibing.factory.PersonStaticFactory" factory-method="getInstance">
-        <constructor-arg value="zhangsan"></constructor-arg>
-    </bean>
+    <!--<bean id="person" class="com.mashibing.factory.PersonStaticFactory" factory-method="getInstance">-->
+        <!--<constructor-arg value="zhangsan"></constructor-arg>-->
+    <!--</bean>-->
     <!--实例工厂：先创建工厂实例，然后调用工厂实例的方法-->
     <!--factory-bean:表示具体工厂类的实例-->
     <!--factory-method:表示具体工厂实例的方法-->
-    <bean id="instanceFactory" class="com.mashibing.factory.PersonInstanceFactory"></bean>
-    <bean id="person2" class="com.mashibing.bean.Person" factory-bean="instanceFactory" factory-method="getInstance">
-        <constructor-arg value="lisi"></constructor-arg>
-    </bean>
+    <!--<bean id="instanceFactory" class="com.mashibing.factory.PersonInstanceFactory"></bean>-->
+    <!--<bean id="person2" class="com.mashibing.bean.Person" factory-bean="instanceFactory" factory-method="getInstance">-->
+        <!--<constructor-arg value="lisi"></constructor-arg>-->
+    <!--</bean>-->
+
+    <!--<bean id="myFactoryBean" class="com.mashibing.factory.MyFactoryBean"></bean>-->
+
+    <!--spring容器在创建对象的时候可以指定具体的初始化和销毁方法-->
+    <!--init-method：在对象创建完成之后会调用初始化方法-->
+    <!--destory-method：在容器关闭的时候会调用销毁方法-->
+
+    <bean id="person" class="com.mashibing.bean.Person" init-method="init" destroy-method="destory"></bean>
 </beans>
 
