@@ -61,7 +61,101 @@
 
     <!-- 使用P命名空间来给属性赋值 -->
     <bean id="person5" class="com.mashibing.bean.Person" p:id="5" p:name="wangwu" p:age="25" p:gender="女">
+    </bean>
+
+    <!-- 给复杂类型进行赋值操作 -->
+    <bean id="person6" class="com.mashibing.bean.Person" scope="prototype">
+        <property name="id" value="1"></property>
+        <property name="age" value="26"></property>
+        <property name="name" value="zhangsan"></property>
+        <property name="gender" value="男"></property>
+        <!--<property name="hobbies" value="book,girl,movie"></property>-->
+        <!--给数组赋值,使用array标签-->
+        <property name="hobbies">
+            <array>
+                <value>book</value>
+                <value>girl</value>
+                <value>movie</value>
+            </array>
+        </property>
+        <!-- 给引用类型赋值 可以使用ref引入外部bean-->
+        <property name="address" ref="address"></property>
+        <!--给list进行赋值-->
+        <!--<property name="lists" value="1,2,3"></property>-->
+        <property name="lists">
+            <list>
+                <bean class="com.mashibing.bean.Address">
+                    <property name="city" value="guangdong"></property>
+                </bean>
+                <bean class="com.mashibing.bean.Address">
+                    <property name="city" value="guangzhou"></property>
+                </bean>
+                <bean class="com.mashibing.bean.Address">
+                    <property name="city" value="shenzhen"></property>
+                </bean>
+                <bean class="com.mashibing.bean.Address">
+                    <property name="city" value="jianada"></property>
+                </bean>
+                <!--使用外部bean-->
+                <ref bean="address"></ref>
+            </list>
+            <!--给set赋值-->
+        </property>
+        <property name="sets">
+            <set>
+                <value>6</value>
+                <value>6</value>
+                <value>6</value>
+                <value>6</value>
+            </set>
+        </property>
+        <!--给map赋值-->
+        <property name="maps">
+            <map>
+                <entry key="a" value="aaa"></entry>
+                <entry key="address" value-ref="address"></entry>
+                <entry key="address2">
+                    <bean class="com.mashibing.bean.Address">
+                        <property name="province" value="广东省"></property>
+                        <property name="city" value="广州市"></property>
+                    </bean>
+                </entry>
+                <entry>
+                    <key><value>hehe</value></key>
+                    <value>haha</value>
+                </entry>
+                <entry key="list">
+                    <list>
+                        <value>11</value>
+                        <value>22</value>
+                    </list>
+                </entry>
+            </map>
+        </property>
+        <!--给properties赋值-->
+        <property name="properties">
+            <props>
+                <prop key="111">111</prop>
+                <prop key="222">222</prop>
+            </props>
+        </property>
+    </bean>
+    <bean id="address" class="com.mashibing.bean.Address">
+        <property name="province" value="河北省"></property>
+        <property name="city" value="邯郸"></property>
+        <property name="town" value="武汉"></property>
+    </bean>
 
 
+    <!--bean之间的继承关系,可以通过parent属性获取父bean中的某些属性值，可以使用abstract标签-->
+    <bean id="parent" class="com.mashibing.bean.Person" abstract="false">
+        <property name="id" value="1"></property>
+        <property name="age" value="26"></property>
+        <property name="name" value="zhangsan"></property>
+        <property name="gender" value="男"></property>
+    </bean>
+
+    <bean id="son" class="com.mashibing.bean.Person" parent="parent">
+        <property name="name" value="haha"></property>
     </bean>
 </beans>

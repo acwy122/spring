@@ -36,8 +36,18 @@ public class MyTest {
 //        System.out.println(person4);
 
 
-        Person person5 = context.getBean("person5", Person.class);
-        System.out.println(person5);
+//        Person person5 = context.getBean("person5", Person.class);
+//        System.out.println(person5);
+
+
+//        Person person6 = context.getBean("person6", Person.class);
+//        System.out.println(person6);
+//        Person son = context.getBean("son", Person.class);
+//        System.out.println(son);
+
+        Person parent = context.getBean("parent", Person.class);
+        System.out.println(parent);
+
     }
 
 }
