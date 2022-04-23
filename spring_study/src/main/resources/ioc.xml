@@ -18,144 +18,158 @@
      type：表示值的类型
      index：表示值的下表，从0开始
      -->
-    <bean id="person" class="com.mashibing.bean.Person" scope="prototype">
-        <property name="id" value="1"></property>
-        <property name="age" value="26"></property>
-        <property name="name" value="zhangsan"></property>
-        <property name="gender" value="男"></property>
-    </bean>
+    <!--<bean id="person" class="com.mashibing.bean.Person" scope="prototype">-->
+        <!--<property name="id" value="1"></property>-->
+        <!--<property name="age" value="26"></property>-->
+        <!--<property name="name" value="zhangsan"></property>-->
+        <!--<property name="gender" value="男"></property>-->
+    <!--</bean>-->
 
-    <!--<bean id="person2" class="com.mashibing.bean.Person" scope="prototype">
-        <property name="id" value="12"></property>
-        <property name="age" value="26"></property>
-        <property name="name" value="zhangsan"></property>
-        <property name="gender" value="女"></property>
-    </bean>-->
-    <!-- 使用构造器方法复制的时候，参数的那么属性是由什么来决定的？由构造方法的参数名称决定的-->
-    <bean id="person2" class="com.mashibing.bean.Person">
-        <constructor-arg name="id" value="2"></constructor-arg>
-        <constructor-arg name="name" value="lisi"></constructor-arg>
-        <constructor-arg name="age" value="22"></constructor-arg>
-        <constructor-arg name="gender" value="男"></constructor-arg>
-    </bean>
-    <!-- 当通过构造器方法赋值的时候，可以把name属性省略不屑，但是要注意必须要保证参数值跟构造器的参数列表的顺序一致 -->
-    <bean id="person3" class="com.mashibing.bean.Person">
-        <constructor-arg  value="2"></constructor-arg>
-        <constructor-arg  value="lisi" index="3"></constructor-arg>
-        <constructor-arg  value="22"></constructor-arg>
-        <constructor-arg  value="男" index="1"></constructor-arg>
-    </bean>
-    <!-- 当有多个相同参数的构造方法存在的时候，默认情况下时覆盖的过程，后面的构造方法会覆盖前面的构造方法
-    如果非要复制给另外一个构造方法的话，可以使用type的参数来进行指定
-    -->
-    <bean id="person4" class="com.mashibing.bean.Person">
-        <constructor-arg  value="2"></constructor-arg>
-        <constructor-arg  value="王五"></constructor-arg>
-        <constructor-arg  value="22" type="java.lang.Integer"></constructor-arg>
-    </bean>
+    <!--&lt;!&ndash;<bean id="person2" class="com.mashibing.bean.Person" scope="prototype">-->
+        <!--<property name="id" value="12"></property>-->
+        <!--<property name="age" value="26"></property>-->
+        <!--<property name="name" value="zhangsan"></property>-->
+        <!--<property name="gender" value="女"></property>-->
+    <!--</bean>&ndash;&gt;-->
+    <!--&lt;!&ndash; 使用构造器方法复制的时候，参数的那么属性是由什么来决定的？由构造方法的参数名称决定的&ndash;&gt;-->
+    <!--<bean id="person2" class="com.mashibing.bean.Person">-->
+        <!--<constructor-arg name="id" value="2"></constructor-arg>-->
+        <!--<constructor-arg name="name" value="lisi"></constructor-arg>-->
+        <!--<constructor-arg name="age" value="22"></constructor-arg>-->
+        <!--<constructor-arg name="gender" value="男"></constructor-arg>-->
+    <!--</bean>-->
+    <!--&lt;!&ndash; 当通过构造器方法赋值的时候，可以把name属性省略不屑，但是要注意必须要保证参数值跟构造器的参数列表的顺序一致 &ndash;&gt;-->
+    <!--<bean id="person3" class="com.mashibing.bean.Person">-->
+        <!--<constructor-arg  value="2"></constructor-arg>-->
+        <!--<constructor-arg  value="lisi" index="3"></constructor-arg>-->
+        <!--<constructor-arg  value="22"></constructor-arg>-->
+        <!--<constructor-arg  value="男" index="1"></constructor-arg>-->
+    <!--</bean>-->
+    <!--&lt;!&ndash; 当有多个相同参数的构造方法存在的时候，默认情况下时覆盖的过程，后面的构造方法会覆盖前面的构造方法-->
+    <!--如果非要复制给另外一个构造方法的话，可以使用type的参数来进行指定-->
+    <!--&ndash;&gt;-->
+    <!--<bean id="person4" class="com.mashibing.bean.Person">-->
+        <!--<constructor-arg  value="2"></constructor-arg>-->
+        <!--<constructor-arg  value="王五"></constructor-arg>-->
+        <!--<constructor-arg  value="22" type="java.lang.Integer"></constructor-arg>-->
+    <!--</bean>-->
 
-    <!--
-    总结：在日常工作中，一般都是用name，value的方式，很少有人去使用index或者type的方式，但是要注意各种情况出现的问题
-    -->
+    <!--&lt;!&ndash;-->
+    <!--总结：在日常工作中，一般都是用name，value的方式，很少有人去使用index或者type的方式，但是要注意各种情况出现的问题-->
+    <!--&ndash;&gt;-->
 
 
-    <!-- 使用P命名空间来给属性赋值 -->
-    <bean id="person5" class="com.mashibing.bean.Person" p:id="5" p:name="wangwu" p:age="25" p:gender="女">
-    </bean>
+    <!--&lt;!&ndash; 使用P命名空间来给属性赋值 &ndash;&gt;-->
+    <!--<bean id="person5" class="com.mashibing.bean.Person" p:id="5" p:name="wangwu" p:age="25" p:gender="女">-->
+    <!--</bean>-->
 
-    <!-- 给复杂类型进行赋值操作 -->
-    <bean id="person6" class="com.mashibing.bean.Person" scope="prototype">
-        <property name="id" value="1"></property>
-        <property name="age" value="26"></property>
-        <property name="name" value="zhangsan"></property>
-        <property name="gender" value="男"></property>
-        <!--<property name="hobbies" value="book,girl,movie"></property>-->
-        <!--给数组赋值,使用array标签-->
-        <property name="hobbies">
-            <array>
-                <value>book</value>
-                <value>girl</value>
-                <value>movie</value>
-            </array>
-        </property>
-        <!-- 给引用类型赋值 可以使用ref引入外部bean-->
-        <property name="address" ref="address"></property>
-        <!--给list进行赋值-->
-        <!--<property name="lists" value="1,2,3"></property>-->
-        <property name="lists">
-            <list>
-                <bean class="com.mashibing.bean.Address">
-                    <property name="city" value="guangdong"></property>
-                </bean>
-                <bean class="com.mashibing.bean.Address">
-                    <property name="city" value="guangzhou"></property>
-                </bean>
-                <bean class="com.mashibing.bean.Address">
-                    <property name="city" value="shenzhen"></property>
-                </bean>
-                <bean class="com.mashibing.bean.Address">
-                    <property name="city" value="jianada"></property>
-                </bean>
-                <!--使用外部bean-->
-                <ref bean="address"></ref>
-            </list>
-            <!--给set赋值-->
-        </property>
-        <property name="sets">
-            <set>
-                <value>6</value>
-                <value>6</value>
-                <value>6</value>
-                <value>6</value>
-            </set>
-        </property>
-        <!--给map赋值-->
-        <property name="maps">
-            <map>
-                <entry key="a" value="aaa"></entry>
-                <entry key="address" value-ref="address"></entry>
-                <entry key="address2">
-                    <bean class="com.mashibing.bean.Address">
-                        <property name="province" value="广东省"></property>
-                        <property name="city" value="广州市"></property>
-                    </bean>
-                </entry>
-                <entry>
-                    <key><value>hehe</value></key>
-                    <value>haha</value>
-                </entry>
-                <entry key="list">
-                    <list>
-                        <value>11</value>
-                        <value>22</value>
-                    </list>
-                </entry>
-            </map>
-        </property>
-        <!--给properties赋值-->
-        <property name="properties">
-            <props>
-                <prop key="111">111</prop>
-                <prop key="222">222</prop>
-            </props>
-        </property>
-    </bean>
-    <bean id="address" class="com.mashibing.bean.Address">
-        <property name="province" value="河北省"></property>
-        <property name="city" value="邯郸"></property>
-        <property name="town" value="武汉"></property>
-    </bean>
+    <!--&lt;!&ndash; 给复杂类型进行赋值操作 &ndash;&gt;-->
+    <!--<bean id="person6" class="com.mashibing.bean.Person" scope="prototype">-->
+        <!--<property name="id" value="1"></property>-->
+        <!--<property name="age" value="26"></property>-->
+        <!--<property name="name" value="zhangsan"></property>-->
+        <!--<property name="gender" value="男"></property>-->
+        <!--&lt;!&ndash;<property name="hobbies" value="book,girl,movie"></property>&ndash;&gt;-->
+        <!--&lt;!&ndash;给数组赋值,使用array标签&ndash;&gt;-->
+        <!--<property name="hobbies">-->
+            <!--<array>-->
+                <!--<value>book</value>-->
+                <!--<value>girl</value>-->
+                <!--<value>movie</value>-->
+            <!--</array>-->
+        <!--</property>-->
+        <!--&lt;!&ndash; 给引用类型赋值 可以使用ref引入外部bean&ndash;&gt;-->
+        <!--<property name="address" ref="address"></property>-->
+        <!--&lt;!&ndash;给list进行赋值&ndash;&gt;-->
+        <!--&lt;!&ndash;<property name="lists" value="1,2,3"></property>&ndash;&gt;-->
+        <!--<property name="lists">-->
+            <!--<list>-->
+                <!--<bean class="com.mashibing.bean.Address">-->
+                    <!--<property name="city" value="guangdong"></property>-->
+                <!--</bean>-->
+                <!--<bean class="com.mashibing.bean.Address">-->
+                    <!--<property name="city" value="guangzhou"></property>-->
+                <!--</bean>-->
+                <!--<bean class="com.mashibing.bean.Address">-->
+                    <!--<property name="city" value="shenzhen"></property>-->
+                <!--</bean>-->
+                <!--<bean class="com.mashibing.bean.Address">-->
+                    <!--<property name="city" value="jianada"></property>-->
+                <!--</bean>-->
+                <!--&lt;!&ndash;使用外部bean&ndash;&gt;-->
+                <!--<ref bean="address"></ref>-->
+            <!--</list>-->
+            <!--&lt;!&ndash;给set赋值&ndash;&gt;-->
+        <!--</property>-->
+        <!--<property name="sets">-->
+            <!--<set>-->
+                <!--<value>6</value>-->
+                <!--<value>6</value>-->
+                <!--<value>6</value>-->
+                <!--<value>6</value>-->
+            <!--</set>-->
+        <!--</property>-->
+        <!--&lt;!&ndash;给map赋值&ndash;&gt;-->
+        <!--<property name="maps">-->
+            <!--<map>-->
+                <!--<entry key="a" value="aaa"></entry>-->
+                <!--<entry key="address" value-ref="address"></entry>-->
+                <!--<entry key="address2">-->
+                    <!--<bean class="com.mashibing.bean.Address">-->
+                        <!--<property name="province" value="广东省"></property>-->
+                        <!--<property name="city" value="广州市"></property>-->
+                    <!--</bean>-->
+                <!--</entry>-->
+                <!--<entry>-->
+                    <!--<key><value>hehe</value></key>-->
+                    <!--<value>haha</value>-->
+                <!--</entry>-->
+                <!--<entry key="list">-->
+                    <!--<list>-->
+                        <!--<value>11</value>-->
+                        <!--<value>22</value>-->
+                    <!--</list>-->
+                <!--</entry>-->
+            <!--</map>-->
+        <!--</property>-->
+        <!--&lt;!&ndash;给properties赋值&ndash;&gt;-->
+        <!--<property name="properties">-->
+            <!--<props>-->
+                <!--<prop key="111">111</prop>-->
+                <!--<prop key="222">222</prop>-->
+            <!--</props>-->
+        <!--</property>-->
+    <!--</bean>-->
+    <!--<bean id="address" class="com.mashibing.bean.Address">-->
+        <!--<property name="province" value="河北省"></property>-->
+        <!--<property name="city" value="邯郸"></property>-->
+        <!--<property name="town" value="武汉"></property>-->
+    <!--</bean>-->
 
 
     <!--bean之间的继承关系,可以通过parent属性获取父bean中的某些属性值，可以使用abstract标签-->
-    <bean id="parent" class="com.mashibing.bean.Person" abstract="false">
-        <property name="id" value="1"></property>
-        <property name="age" value="26"></property>
-        <property name="name" value="zhangsan"></property>
-        <property name="gender" value="男"></property>
-    </bean>
+    <!--<bean id="parent" class="com.mashibing.bean.Person" abstract="false">-->
+        <!--<property name="id" value="1"></property>-->
+        <!--<property name="age" value="26"></property>-->
+        <!--<property name="name" value="zhangsan"></property>-->
+        <!--<property name="gender" value="男"></property>-->
+    <!--</bean>-->
 
-    <bean id="son" class="com.mashibing.bean.Person" parent="parent">
-        <property name="name" value="haha"></property>
+    <!--<bean id="son" class="com.mashibing.bean.Person" parent="parent">-->
+        <!--<property name="name" value="haha"></property>-->
+    <!--</bean>-->
+
+    <!--利用工厂方法创建bean-->
+    <!--静态工厂:类名.静态方法()-->
+    <bean id="person" class="com.mashibing.factory.PersonStaticFactory" factory-method="getInstance">
+        <constructor-arg value="zhangsan"></constructor-arg>
+    </bean>
+    <!--实例工厂：先创建工厂实例，然后调用工厂实例的方法-->
+    <!--factory-bean:表示具体工厂类的实例-->
+    <!--factory-method:表示具体工厂实例的方法-->
+    <bean id="instanceFactory" class="com.mashibing.factory.PersonInstanceFactory"></bean>
+    <bean id="person2" class="com.mashibing.bean.Person" factory-bean="instanceFactory" factory-method="getInstance">
+        <constructor-arg value="lisi"></constructor-arg>
     </bean>
 </beans>
+
