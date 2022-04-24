@@ -68,7 +68,7 @@ public class MyTest {
 //        System.out.println(dataSource);
 //        System.out.println(dataSource.getConnection());
 
-        Person person = context.getBean("person", Person.class);
+        Person person = context.getBean("person2", Person.class);
         System.out.println(person);
     }
 
