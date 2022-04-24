@@ -177,7 +177,23 @@
     <!--spring容器在创建对象的时候可以指定具体的初始化和销毁方法-->
     <!--init-method：在对象创建完成之后会调用初始化方法-->
     <!--destory-method：在容器关闭的时候会调用销毁方法-->
+    <!--初始化和销毁的方法跟scope属性也是相关联的
+    如果是singleton的话，初始化和销毁的方法都存在
+    如果是prototype的话，初始化方法会被调用，但是销毁的方法不会调用
+    -->
+    <!--<bean id="person" class="com.mashibing.bean.Person" init-method="init" destroy-method="destory" scope="prototype"></bean>-->
+    <!--<bean id="myBeanPostProcessor" class="com.mashibing.bean.MyBeanPostProcessor"></bean>-->
+    <!--<bean id="address" class="com.mashibing.bean.Address"></bean>-->
+    <!--spring管理第三方对象-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="username" value="root"></property>
+        <property name="password" value="12345678"></property>
+        <property name="url" value="jdbc:masql://localhost:3306/user_code"></property>
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+    </bean>
 
-    <bean id="person" class="com.mashibing.bean.Person" init-method="init" destroy-method="destory"></bean>
+
+
+
 </beans>
 
