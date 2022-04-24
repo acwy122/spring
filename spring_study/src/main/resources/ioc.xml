@@ -2,7 +2,13 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:p="http://www.springframework.org/schema/p"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+
+">
 
     <!-- 在进行框架配置的时候，可以使用xml文件，也可以使用注解的方式
      很多同学觉得xml的方式比较麻烦，但是xml的配置方式还是要学习的，因为在项目开发过程中
@@ -185,15 +191,39 @@
     <!--<bean id="myBeanPostProcessor" class="com.mashibing.bean.MyBeanPostProcessor"></bean>-->
     <!--<bean id="address" class="com.mashibing.bean.Address"></bean>-->
     <!--spring管理第三方对象-->
-    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
-        <property name="username" value="root"></property>
-        <property name="password" value="12345678"></property>
-        <property name="url" value="jdbc:masql://localhost:3306/user_code"></property>
-        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+    <!--<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">-->
+        <!--<property name="username" value="root"></property>-->
+        <!--<property name="password" value="123456"></property>-->
+        <!--<property name="url" value="jdbc:masql://localhost:3306/user_code"></property>-->
+        <!--<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>-->
+    <!--</bean>-->
+
+    <!--当需要引入外部的配置文件的时候，需要导入一些context的命名空间-->
+    <!--<context:property-placeholder location="classpath:db.properties"></context:property-placeholder>-->
+    <!--<bean id="dataSource2" class="com.alibaba.druid.pool.DruidDataSource">-->
+        <!--<property name="username" value="${jdbc.username}"></property>-->
+        <!--<property name="password" value="${jdbc.password}"></property>-->
+        <!--<property name="url" value="${jdbc.url}"></property>-->
+        <!--<property name="driverClassName" value="${jdbc.driverClassName}"></property>-->
+    <!--</bean>-->
+
+    <!--<bean id="person" class="com.mashibing.bean.Person">-->
+        <!--<property name="name" value="${jdbc.username}"></property>-->
+    <!--</bean>-->
+
+    <!--spring中的自动装配-->
+    <bean id="address" class="com.mashibing.bean.Address">
+        <property name="province" value="河北"></property>
+        <property name="city" value="邯郸"></property>
+        <property name="town" value="武汉"></property>
     </bean>
-
-
-
-
+    <!--在spring中可以使用自动装配的功能，spring会把某些bean注入到另外的bean中
+    可以使用autowire属性来实现自动装配，有以下集中情况
+    default、no:不装配
+    byname：按照名字进行装配，根据set方法后面的的名称首字母小写决定的，不是参数列表的名称
+    bytype：按照bean的类型来进行装配，但是如果有多个类型就会报错不知道选择哪一个具体的类型
+    constructor：按照构造器进行装配，首先按照类型进行判断，如果有多个类型相同的bean，再按照id去进行判断
+    -->
+    <bean id="person" class="com.mashibing.bean.Person" autowire="byName"></bean>
 </beans>
 

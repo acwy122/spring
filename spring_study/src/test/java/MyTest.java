@@ -64,11 +64,12 @@ public class MyTest {
 //        System.out.println(person);
 //        ((ClassPathXmlApplicationContext) context).close();
         //
-        DruidDataSource dataSource = context.getBean("dataSource", DruidDataSource.class);
-        System.out.println(dataSource);
-        System.out.println(dataSource.getConnection());
+//        DruidDataSource dataSource = context.getBean("dataSource2", DruidDataSource.class);
+//        System.out.println(dataSource);
+//        System.out.println(dataSource.getConnection());
 
-
+        Person person = context.getBean("person", Person.class);
+        System.out.println(person);
     }
 
 }
